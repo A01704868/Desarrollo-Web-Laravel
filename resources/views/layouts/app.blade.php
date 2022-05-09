@@ -14,43 +14,43 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid d-flex justify-content-end">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid ">
             <a class="navbar-brand" href="/">Eventos</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    @if (auth()->check())
-                        <li class="nav-item">
-                            <p class="nav-link">
-                                Bienvenido
-                                <b>
+            <div class="row d-flex justify-content-end">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav">
+                        @if (auth()->check())
+                            <li class="nav-item">
+                                <b class="nav-link">
                                     {{ auth()->user()->name }}
                                 </b>
-                            </p>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('login.destroy') }}" class="nav-link">
-                                Cerrar sesión
-                            </a>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a href="{{ route('login.index') }}" class="nav-link">
-                                Iniciar sesión
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('register.index') }}" class="nav-link">
-                                Registro
-                            </a>
-                        </li>
-                    @endif
-                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('login.destroy') }}" class="nav-link">
+                                    Cerrar sesión
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="{{ route('login.index') }}" class="nav-link">
+                                    Iniciar sesión
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('register.index') }}" class="nav-link">
+                                    Registro
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
+
         </div>
     </nav>
 
