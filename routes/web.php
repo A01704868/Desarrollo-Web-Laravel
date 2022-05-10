@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('home');
 })->middleware('auth');
 
+Route::get('/students', function () {
+    return view('students.index');
+})
+    ->name('students');
+
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');
