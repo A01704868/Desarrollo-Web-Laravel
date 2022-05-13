@@ -59,8 +59,8 @@
                             Me encanta react 🤟
                         </p>
 
-                        <a href="https://www.instagram.com/danielcu.sanchez/" class="btn btn-primary" target="_blank">
-                            Instagram
+                        <a href="https://www.facebook.com/soto.ayala.paula.sofia/" class="btn btn-primary" target="_blank">
+                            Facebook
                         </a>
                     </div>
                 </div>
@@ -86,18 +86,18 @@
             {{-- Every student --}}
             <div class="col-sm-12 col-md-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('/images/students/Daniel.jpg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/images/students/Richi.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">
-                            Ricardo Arturo Camarena
+                            Ricardo Arturo Camarena Colón
                         </h5>
                         <span class="badge bg-secondary">ISC</span>
                         <b>A01703831</b>
                         <p class="card-text">
-                            Artista super rifafo😉
+                            Artista súper rifado 😉
                         </p>
 
-                        <a href="https://www.instagram.com/danielcu.sanchez/" class="btn btn-primary" target="_blank">
+                        <a href="https://www.instagram.com/richicamarena/" class="btn btn-primary" target="_blank">
                             Instagram
                         </a>
                     </div>
