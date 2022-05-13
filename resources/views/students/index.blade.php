@@ -30,7 +30,7 @@
             {{-- Title --}}
             <h1 class="text-center my-4">Equipo LDAW</h1>
             {{-- Every student --}}
-            <div class="col-sm-12 col-md-3">
+            <div class="col mb-md-3">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/Daniel.jpg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -48,7 +48,7 @@
                 </div>
             </div>
             {{-- Every student --}}
-            <div class="col-sm-12 col-md-3">
+            <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/Sofia.JPG') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -66,7 +66,7 @@
                 </div>
             </div>
             {{-- Every student --}}
-            <div class="col-sm-12 col-md-3">
+            <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/Alex.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             {{-- Every student --}}
-            <div class="col-sm-12 col-md-3">
+            <div class="col">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/Richi.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
