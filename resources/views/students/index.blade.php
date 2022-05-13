@@ -50,7 +50,7 @@
             {{-- Every student --}}
             <div class="col-sm-12 col-md-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('/images/students/Daniel.jpg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/images/students/Sofia.JPG') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Paula Sofía Soto</h5>
                         <span class="badge bg-secondary">ISC</span>
