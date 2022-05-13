@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         <div class="row d-flex justify-content-center">
             <h1 class="text-3xl text-center font-bold">Bienvenido APP Eventos</h1>
             <div class="col-sm-8">
