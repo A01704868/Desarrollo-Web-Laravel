@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RegisterEventController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 
@@ -36,3 +37,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
+Route::get('/registerEvent', [RegisterEventController::class, 'create'])
+    ->middleware('auth')
+    ->name('registerEvent.index');
