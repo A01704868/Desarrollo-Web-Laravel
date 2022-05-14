@@ -14,9 +14,11 @@ class CreateUsuariosEventosReservansTable extends Migration
     public function up()
     {
         Schema::create('usuarios_eventos_reservans', function (Blueprint $table) {
-            $table->increments('id');
-            $table->foreignId('id_usuario')->constrained('usuarios')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_evento')->constrained('eventos')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->id();
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->unsignedBigInteger('id_evento');
+            $table->foreign('id_evento')->references('id_evento')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('asistencia');
             $table->string('codigo_qr');
             $table->boolean('esta_activo');
