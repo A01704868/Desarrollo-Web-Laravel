@@ -24,18 +24,20 @@
             <div class="row d-flex justify-content-end">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav">
-                        @if (auth()->check())
+                        @auth
                             <li class="nav-item">
-                                <b class="nav-link">
+                                <a href="users" class="nav-link">
                                     {{ auth()->user()->name }}
-                                </b>
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('login.destroy') }}" class="nav-link">
                                     Cerrar sesión
                                 </a>
                             </li>
-                        @else
+                        @endauth
+
+                        @guest
                             <li class="nav-item">
                                 <a href="{{ route('login.index') }}" class="nav-link">
                                     Iniciar sesión
@@ -51,7 +53,7 @@
                                     Equipo LDAW
                                 </a>
                             </li>
-                        @endif
+                        @endguest
                     </ul>
                 </div>
             </div>

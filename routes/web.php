@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RegisterEventController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
@@ -13,6 +15,9 @@ Route::get('/students', function () {
     return view('students.index');
 })
     ->name('students');
+
+Route::resource('users', UserController::class)
+    ->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
@@ -32,7 +37,10 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
-
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
+Route::get('/registerEvent', [RegisterEventController::class, 'create'])
+    ->middleware('auth')
+    ->name('registerEvent.index');
