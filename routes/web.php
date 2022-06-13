@@ -16,6 +16,9 @@ Route::get('/students', function () {
 })
     ->name('students');
 
+Route::resource('users', UserController::class)
+    ->middleware('auth');
+
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('register.index');
@@ -33,7 +36,6 @@ Route::post('/login', [SessionsController::class, 'store'])
 Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
-
 
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
