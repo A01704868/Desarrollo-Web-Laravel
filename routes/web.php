@@ -16,6 +16,11 @@ Route::get('/students', function () {
 })
     ->name('students');
 
+Route::get('/events', function () {
+    return view('events.infoEvents');
+})
+    ->name('eventsInfo');
+
 Route::resource('users', UserController::class)
     ->middleware('auth');
 
