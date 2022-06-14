@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             {{-- Every event --}}
             <div class="col mb-md-3">
-              <a href="#" style="text-decoration:none; color:black;" target="_blank">
+              <a href="{{ route('eventsInfo') }}" style="text-decoration:none; color:black;" target="_blank">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/event-placeholder.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -26,7 +26,7 @@
             </div>
             {{-- Every event --}}
             <div class="col">
-              <a href="#" style="text-decoration:none; color:black;" target="_blank">
+              <a href="{{ route('eventsInfo') }}" style="text-decoration:none; color:black;" target="_blank">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/images/students/event-placeholder.jpeg') }}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -155,7 +155,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">
-                            Descripción 
+                            Descripción
                         </label>
                         <input type="text" class="form-control form-control-lg" placeholder="Contraseña" id="descripcion"
                             name="descripcion">
