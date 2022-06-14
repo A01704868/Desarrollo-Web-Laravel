@@ -8,7 +8,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventoController;
 
-Route::redirect('/', '/eventos');
 
 // Events
 Route::resource('/eventos', EventoController::class)->middleware('auth.guest');
@@ -30,6 +29,8 @@ Route::get('/dashboard/mi-cuenta', [UserController::class, 'index'])
     ->name('admin.index');
 
 // Authentication
+
+Route::redirect('/', '/login');
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')

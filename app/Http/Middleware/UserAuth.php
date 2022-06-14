@@ -18,7 +18,7 @@ class UserAuth
   {
 
     if (auth()->check()) {
-      if (auth()->user()->role !== 'admin') {
+      if (auth()->user()->role === null) {
         return $next($request);
       }
     }
