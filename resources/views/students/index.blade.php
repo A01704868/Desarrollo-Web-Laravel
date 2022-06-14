@@ -22,7 +22,8 @@
 <body>
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Volver al proyecto</a>
+            <a class="nav-link active" aria-current="page"
+                href="{{ auth()->user()->role === 'admin' ? '/dashboard' : '/' }}">Volver al proyecto</a>
         </li>
     </ul>
     <div class="container mt-4">
@@ -59,7 +60,8 @@
                             Me encanta react 🤟
                         </p>
 
-                        <a href="https://www.facebook.com/soto.ayala.paula.sofia/" class="btn btn-primary" target="_blank">
+                        <a href="https://www.facebook.com/soto.ayala.paula.sofia/" class="btn btn-primary"
+                            target="_blank">
                             Facebook
                         </a>
                     </div>

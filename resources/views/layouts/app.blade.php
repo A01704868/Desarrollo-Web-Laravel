@@ -48,11 +48,6 @@
                                     Registro
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('students') }}" class="nav-link">
-                                    Equipo LDAW
-                                </a>
-                            </li>
                         @endguest
                     </ul>
                 </div>
