@@ -6,10 +6,11 @@ use App\Http\Controllers\RegisterEventController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventoController;
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+Route::redirect('/', '/eventos');
+
+Route::resource('/eventos', EventoController::class)->middleware('auth');
 
 Route::get('/students', function () {
     return view('students.index');
