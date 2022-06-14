@@ -2,28 +2,38 @@
 
 @section('title', 'Home')
 
+@push('styles')
+
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/index.css') }}" />
+
+@endpush
+
 @section('content')
 
     <h1 class="text-5xl text-center pt-5">Eventos</h1>
-
     <div class="container mt-4">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center event-container">
             {{-- Every event --}}
+          @forelse($eventos as $evento)
             <div class="col mb-md-3">
               <a href="{{ route('eventsInfo') }}" style="text-decoration:none; color:black;" target="_blank">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('/images/students/event-placeholder.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ $evento->coverPath() }}" class="card-img-top" alt="{{$evento->nombre_evento}}">
                     <div class="card-body">
-                        <h4 class="card-title" style="margin-bottom: 2rem;">Event Title</h4>
-                        <b>Description</b>
+                        <h4 class="card-title" style="margin-bottom: 2rem;">{{$evento->nombre_evento}}</h4>
+                        <b>{{$evento->descripcion}}</b>
                         <ul>
-                          <li>Time and location</li>
-                          <li>Directions</li>
+                          <li>Fecha: {{$evento->fecha_evento}}</li>
+                          <li>Horario: {{$evento->hora_inicio}} - {{$evento->hora_final}}</li>
+                          <li>Direccion: {{$evento->direccion}}</li>
                         </ul>
                     </div>
                 </div>
                 </a>
             </div>
+            @empty
+              <div class="alert alert-warning"> No hay eventos</div>
+            @endforelse
             {{-- Every event --}}
             <div class="col">
               <a href="{{ route('eventsInfo') }}" style="text-decoration:none; color:black;" target="_blank">
