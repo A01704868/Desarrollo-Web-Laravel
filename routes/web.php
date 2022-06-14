@@ -43,7 +43,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
-Route::get('/admin', [AdminController::class, 'index'])
+Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
