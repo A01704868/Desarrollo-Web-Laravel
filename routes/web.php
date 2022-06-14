@@ -12,18 +12,32 @@ Route::redirect('/', '/eventos');
 
 Route::resource('/eventos', EventoController::class)->middleware('auth');
 
+// Team LDAW
 Route::get('/students', function () {
     return view('students.index');
 })
     ->name('students');
-
+// Events
 Route::get('/events', function () {
     return view('events.infoEvents');
 })
     ->name('eventsInfo');
 
+Route::get('/registerEvent', [RegisterEventController::class, 'create'])
+    ->middleware('auth')
+    ->name('registerEvent.index');
+
+// Account
 Route::resource('users', UserController::class)
     ->middleware('auth');
+
+
+// Dashboard
+Route::get('/dashboard', [AdminController::class, 'index'])
+    ->middleware('auth.admin')
+    ->name('admin.index');
+
+// Authentication
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
@@ -42,11 +56,3 @@ Route::post('/login', [SessionsController::class, 'store'])
 Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
-
-Route::get('/dashboard', [AdminController::class, 'index'])
-    ->middleware('auth.admin')
-    ->name('admin.index');
-
-Route::get('/registerEvent', [RegisterEventController::class, 'create'])
-    ->middleware('auth')
-    ->name('registerEvent.index');
