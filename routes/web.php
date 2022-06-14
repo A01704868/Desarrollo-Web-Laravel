@@ -11,32 +11,21 @@ use App\Http\Controllers\EventoController;
 Route::redirect('/', '/eventos');
 
 // Events
-Route::resource('/eventos', EventoController::class)->middleware('auth');
+Route::resource('/eventos', EventoController::class)->middleware('auth.guest');
 //eventos/1 put/post/delete/get
 //eventos GET
 
 // Team LDAW
-Route::get('/students', function () {
+Route::get('/equipo-ldaw', function () {
     return view('students.index');
-})
-    ->name('students');
-
-
-Route::get('/registerEvent', [RegisterEventController::class, 'create'])
-    ->middleware('auth')
-    ->name('registerEvent.index');
-
-// Account
-Route::resource('users', UserController::class)
-    ->middleware('auth');
-
+});
 
 // Dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
-Route::get('/dashboard/mi-cuenta', [AdminController::class, 'account'])
+Route::get('/dashboard/mi-cuenta', [UserController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 

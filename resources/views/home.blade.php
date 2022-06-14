@@ -14,8 +14,7 @@
             {{-- Every event --}}
             @forelse($eventos as $evento)
                 <div class="col-md-4 mb-md-3">
-                    <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;"
-                        target="_blank">
+                    <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ $evento->coverPath() }}" class="card-img-top"
                                 alt="{{ $evento->nombre_evento }}">

@@ -109,7 +109,7 @@
 
 
                 <footer>
-                    <p>Todos los derechos reservados: <a href="/students">Equipo 1 LDAW </a></p>
+                    <p>Todos los derechos reservados: <a href="/equipo-ldaw">Equipo 1 LDAW </a></p>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->
