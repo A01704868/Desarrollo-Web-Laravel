@@ -10,18 +10,16 @@ use App\Http\Controllers\EventoController;
 
 Route::redirect('/', '/eventos');
 
+// Events
 Route::resource('/eventos', EventoController::class)->middleware('auth');
+Route::get('/events/{id}', [EventoController::class, 'show'])->middleware('auth');
 
 // Team LDAW
 Route::get('/students', function () {
     return view('students.index');
 })
     ->name('students');
-// Events
-Route::get('/events', function () {
-    return view('events.infoEvents');
-})
-    ->name('eventsInfo');
+
 
 Route::get('/registerEvent', [RegisterEventController::class, 'create'])
     ->middleware('auth')
