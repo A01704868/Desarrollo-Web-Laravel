@@ -12,7 +12,8 @@ Route::redirect('/', '/eventos');
 
 // Events
 Route::resource('/eventos', EventoController::class)->middleware('auth');
-Route::get('/events/{id}', [EventoController::class, 'show'])->middleware('auth');
+//eventos/1 put/post/delete/get
+//eventos GET
 
 // Team LDAW
 Route::get('/students', function () {
