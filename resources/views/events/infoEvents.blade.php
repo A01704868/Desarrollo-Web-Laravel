@@ -26,10 +26,6 @@
 </section>
 
 
-
-
-
-
 @endsection
 
 <style>
