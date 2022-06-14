@@ -37,6 +37,10 @@ Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
+Route::get('/dashboard/mi-cuenta', [AdminController::class, 'account'])
+    ->middleware('auth.admin')
+    ->name('admin.index');
+
 // Authentication
 
 Route::get('/register', [RegisterController::class, 'create'])

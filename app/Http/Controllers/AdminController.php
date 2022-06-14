@@ -12,4 +12,10 @@ class AdminController extends Controller
 
         return view('dashboard.index');
     }
+
+    public function account()
+    {
+
+        return view('users.index');
+    }
 }
