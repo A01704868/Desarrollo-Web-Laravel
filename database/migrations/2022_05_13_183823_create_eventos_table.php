@@ -18,6 +18,7 @@ class CreateEventosTable extends Migration
             $table->string('nombre_organizador');
             $table->string('celular_organizador');
             $table->string('nombre_evento');
+            $table->string('imagen');
             $table->string('fecha_evento');
             $table->string('hora_inicio');
             $table->string('hora_final');
