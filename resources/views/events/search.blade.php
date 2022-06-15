@@ -12,11 +12,14 @@
     <div class="container mt-4">
 
     <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
-            <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;" type="submit">Buscar</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
+        <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;" type="submit">Buscar</button>
     </form>
+
     <br>
-    <div class="row justify-content-center">      
+    
+    <div class="row justify-content-center">
+            
     </div>
         <div class="row justify-content-center event-container">
             {{-- Every event --}}

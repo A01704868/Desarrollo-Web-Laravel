@@ -14,7 +14,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Evento::orderBy('nombre_evento', 'desc')->get();
+        $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
 
         if (auth()->user()->role === 'admin') {
 
@@ -93,5 +93,12 @@ class EventoController extends Controller
         $evento = Evento::find($id);
         $evento->delete();
         return redirect()->route('dashboard-events.index')->with('success', 'Eliminado');
+    }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $eventos = Evento::where('nombre_evento', 'LIKE', '%'.$search_text.'%')->get();
+
+        return view('events.search', compact('eventos'));
     }
 }

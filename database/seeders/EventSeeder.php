@@ -44,7 +44,22 @@ class EventSeeder extends Seeder
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')
-            ]
+            ],
+            [
+                'id' => 3,
+                'nombre_organizador' => 'Ricardo',
+                'celular_organizador' => '987654321',
+                'nombre_evento' => 'Fiesta!!!',
+                'imagen' => 'https://images.8tracks.com/cover/i/008/745/162/tumblr_n7n2pxA28G1slscg7o1_500-1473.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max',
+                'fecha_evento' => '18/06/22',
+                'hora_inicio' => '21:00',
+                'hora_final' => '23:59',
+                'descripcion' => 'Vente a Pistear',
+                'direccion' => 'Pistear',
+                'esta_activo' => true,
+                'fecha_creado' => date('Y-m-d'),
+                'fecha_actualizado' => date('Y-m-d')
+            ],
         ]);
     }
 }
