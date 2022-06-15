@@ -44,7 +44,8 @@
                                         <td>{{ $evento->hora_inicio }}</td>
                                         <td>{{ $evento->direccion }}</td>
                                         <td>
-                                            <a href="dashboard/eventos/{{ $evento->id }}">Editar</a>
+                                            <a href="{{ route('dashboard-events.edit', [$evento->id]) }}"
+                                                class="btn btn-primary btn-sm">Editar</a>
                                             <form action="{{ route('dashboard-events.destroy', [$evento->id]) }}"
                                                 method="POST">
                                                 @method('DELETE')

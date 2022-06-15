@@ -68,7 +68,7 @@
                                 @endauth
                             </a>
                         </li>
-                        <li><a href="dashboard/mi-cuenta"><i class="fa fa-gear fa-fw"></i> Configuración</a>
+                        <li><a href="{{ route('mi-cuenta') }}"><i class="fa fa-gear fa-fw"></i> Configuración</a>
                         </li>
                         <li class="divider"></li>
                         <li>

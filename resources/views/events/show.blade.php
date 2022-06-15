@@ -10,7 +10,7 @@
 
     <section id="descriptionEvent">
         <div class="container-wide">
-            <h2 class="mb-5">Full Description</h2>
+            <h2 class="mb-5">Detalle de evento</h2>
             <p>
                 {{ $evento->descripcion }}
             </p>

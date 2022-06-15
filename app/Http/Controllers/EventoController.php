@@ -64,11 +64,12 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evento $evento)
+    public function edit($id)
     {
-        //
-    }
+        $evento = Evento::find($id);
 
+        return view("dashboard.event", ["evento" => $evento]);
+    }
     /**
      * Update the specified resource in storage.
      *
