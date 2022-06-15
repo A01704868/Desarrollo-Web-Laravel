@@ -18,7 +18,7 @@ class CreateEventosCategoriasTable extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('id_evento');
-            $table->foreign('id_evento')->references('id_evento')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_evento')->references('id')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('esta_activo');
             $table->date('fecha_creado');
             $table->date('fecha_actualizado');

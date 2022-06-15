@@ -16,7 +16,7 @@ class EventSeeder extends Seeder
     {
         DB::table('eventos')->insert([
             [
-                'id_evento' => 1,
+                'id' => 1,
                 'nombre_organizador' => 'Alex',
                 'celular_organizador' => '123456789',
                 'nombre_evento' => 'Viaje a la Luna',
@@ -31,7 +31,7 @@ class EventSeeder extends Seeder
                 'fecha_actualizado' => date('Y-m-d')
             ],
             [
-                'id_evento' => 2,
+                'id' => 2,
                 'nombre_organizador' => 'Daniel',
                 'celular_organizador' => '987654321',
                 'nombre_evento' => 'Viaje a Marte',
@@ -40,7 +40,7 @@ class EventSeeder extends Seeder
                 'hora_inicio' => '9:00',
                 'hora_final' => '12:00',
                 'descripcion' => 'Hoy vamos a Marte',
-                'direccion' => 'Kennedy Space Center',
+                'direccion' => 'Kennedy Space Elon Musk',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')

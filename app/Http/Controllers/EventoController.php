@@ -16,7 +16,12 @@ class EventoController extends Controller
     {
         $eventos = Evento::orderBy('nombre_evento', 'desc')->get();
 
-        return view("home", ["eventos" => $eventos]);
+        if (auth()->user()->role === 'admin') {
+
+            return view("dashboard.events", ["eventos" => $eventos]);
+        } else {
+            return view("home", ["eventos" => $eventos]);
+        }
     }
 
     /**
@@ -48,10 +53,9 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        $evento = Evento::where('id_evento', $id)->get();
+        $evento = Evento::find($id);
 
-        info($evento);
-        return view("events.show", ["evento" => $evento[0]]);
+        return view("events.show", ["evento" => $evento]);
     }
 
     /**
@@ -83,8 +87,10 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evento $evento)
+    public function destroy($id)
     {
-        //
+        $evento = Evento::find($id);
+        $evento->delete();
+        return redirect()->route('dashboard-events.index')->with('success', 'Eliminado');
     }
 }

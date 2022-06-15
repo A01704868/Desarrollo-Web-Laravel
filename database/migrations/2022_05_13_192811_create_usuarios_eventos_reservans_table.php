@@ -18,13 +18,12 @@ class CreateUsuariosEventosReservansTable extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('id_evento');
-            $table->foreign('id_evento')->references('id_evento')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_evento')->references('id')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('asistencia');
             $table->string('codigo_qr');
             $table->boolean('esta_activo');
             $table->date('fecha_creado');
             $table->date('fecha_actualizado');
-
         });
     }
 
