@@ -34,6 +34,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 // Events
 Route::redirect('/', '/eventos');
 
+Route::get('/search', [EventoController::class, 'search']);
 Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 //eventos/1 put/post/delete/get
 //eventos GET
