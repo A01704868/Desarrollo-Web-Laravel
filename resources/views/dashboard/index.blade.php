@@ -18,7 +18,7 @@
             <div class="panel panel-primary text-center no-boder bg-color-green">
                 <div class="panel-body">
                     <i class="fa fa-bar-chart-o fa-5x"></i>
-                    <h3>0</h3>
+                    <h3>{{ $eventos }}</h3>
                 </div>
                 <div class="panel-footer back-footer-green">
                     Eventos registrados
@@ -29,10 +29,10 @@
             <div class="panel panel-primary text-center no-boder bg-color-blue">
                 <div class="panel-body">
                     <i class="fa fa-shopping-cart fa-5x"></i>
-                    <h3>0</h3>
+                    <h3>{{ $registros }}</h3>
                 </div>
                 <div class="panel-footer back-footer-blue">
-                    Total de registros
+                    Total de registros a eventos
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="panel panel-primary text-center no-boder bg-color-brown">
                 <div class="panel-body">
                     <i class="fa fa-users fa-5x"></i>
-                    <h3>0</h3>
+                    <h3>{{ $usuarios }}</h3>
                 </div>
                 <div class="panel-footer back-footer-brown">
                     Usuarios en sistema

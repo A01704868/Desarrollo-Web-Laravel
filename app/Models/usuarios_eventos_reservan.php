@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuarios_eventos_reservan extends Model
+class Usuarios_eventos_reservan extends Model
 {
     use HasFactory;
 }
