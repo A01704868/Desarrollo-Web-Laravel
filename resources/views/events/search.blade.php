@@ -11,21 +11,34 @@
     <h1 class="text-5xl text-center pt-5">Eventos</h1>
     <div class="container mt-4">
 
-    <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
-        <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;" type="submit">Buscar</button>
-    </form>
-
+    <div class="row">
+        <div class="col">
+            <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
+                <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;" type="submit">Buscar</button>
+            </form>
+        </div>
+        <div class="col">
+            <form action="{{ url('/category') }}" type="get">
+                <select class="dropdown" name="category" onchange="this.form.submit()">
+                    <option class="dropdown-item" value="0">Categorias</option>
+                    @forelse($categorias as $categoria)
+                        <option class="dropdown-item" value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                    @empty
+                        <option value="">NO hay categorias</option>
+                    @endforelse
+                </select>
+            </form>
+        </div>
+    </div>
     <br>
-    
-    <div class="row justify-content-center">
-            
+    <div class="row justify-content-center">      
     </div>
         <div class="row justify-content-center event-container">
             {{-- Every event --}}
             @forelse($eventos as $evento)
                 <div class="col-md-4 mb-md-3">
-                    <a href="/eventos/{{ $evento->id }}" style="text-decoration:none; color:black;">
+                    <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ $evento->imagen }}" class="card-img-top" alt="{{ $evento->nombre_evento }}">
                             <div class="card-body">

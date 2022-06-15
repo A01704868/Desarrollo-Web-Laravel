@@ -36,6 +36,7 @@ Route::redirect('/', '/eventos');
 Route::post('/editarAsistencia/{eventoId}', [EventoController::class, 'attendance'])->name('editarAsistencia');
 
 Route::get('/search', [EventoController::class, 'search']);
+Route::get('/category', [EventoController::class, 'category']);
 Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 //eventos/1 put/post/delete/get
 //eventos GET

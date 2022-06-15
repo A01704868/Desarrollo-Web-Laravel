@@ -21,7 +21,7 @@
         <div class="col">
             <form action="{{ url('/category') }}" type="get">
                 <select class="dropdown" name="category" onchange="this.form.submit()">
-                    <option class="dropdown-item" value="0">Categorias</option>
+                <option class="dropdown-item" value="0">Categorias</option>
                     @forelse($categorias as $categoria)
                         <option class="dropdown-item" value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                     @empty

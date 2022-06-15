@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Categoria;
+use App\Models\eventos_categorias;
 use App\Models\Usuario;
 use App\Models\usuarios_eventos_crean;
 use Illuminate\Http\Request;
@@ -16,12 +18,13 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
+        $categorias = Categoria::orderBy('id', 'asc')->get();
+        $eventos = Evento::orderBy('id', 'asc')->get();
 
         if (auth()->user()->role === 'admin') {
             return view("dashboard.events", ["eventos" => $eventos]);
         } else {
-            return view("home", ["eventos" => $eventos]);
+            return view("home", ["eventos" => $eventos, "categorias" => $categorias]);
         }
     }
 
@@ -131,8 +134,22 @@ class EventoController extends Controller
 
     public function search(){
         $search_text = $_GET['query'];
+        $categorias = Categoria::orderBy('id', 'asc')->get();
         $eventos = Evento::where('nombre_evento', 'LIKE', '%'.$search_text.'%')->get();
 
-        return view('events.search', compact('eventos'));
+        return view('events.search', ["eventos" => $eventos, "categorias" => $categorias]);
     }
+
+    public function category(){
+        //$search_var = $_GET['category'];
+
+        $categorias = Categoria::orderBy('id', 'asc')->get();
+
+        $eventos = Evento::whereHas('categorias', function($q){
+            $q->where('categoria_id', '=', $_GET['category']);
+        })->get();
+
+        return view('events.category', ["eventos" => $eventos, "categorias" => $categorias]);
+    }
+
 }
