@@ -49,18 +49,12 @@ class EventoController extends Controller
     public function attendance(Request $request, $eventoId)
     {
         $userId = auth()->user()->id;
-        $eventoRegistro = usuarios_eventos_crean::where('id_usuario', '=', $userId)
-            ->where('id_evento', '=', $eventoId)
+        $eventoRegistro = usuarios_eventos_crean::where('id_usuario', $userId)
+            ->where('id_evento', $eventoId)
             ->get();
 
-        print($eventoRegistro[0]);
-
-        $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
-        if (auth()->user()->role === 'admin') {
-            return view("dashboard.events", ["eventos" => $eventos]);
-        } else {
-            return view("home", ["eventos" => $eventos]);
-        }
+        return view("events.show", ["eventoRegistro" => $eventoRegistro]);
+        
     }
 
     /**
