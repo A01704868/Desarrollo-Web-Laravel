@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
-use App\Models\usuarios_eventos_reservan;
+use App\Models\usuarios_eventos_crean;
 
 class UsuariosController extends Controller
 {
@@ -25,16 +25,13 @@ class UsuariosController extends Controller
         // $usuarios = Usuario::whereRaw('age > ? and votes = 100', [25])->get();
         // $evento = Usuario::where('id_evento', $id)->get();
         // info($evento);
-        $usuarios = Usuario::addSelect(['nombre' => usuarios_eventos_reservan::select('id_evento')
+        $usuarios = Usuario::addSelect(['nombre' => usuarios_eventos_crean::select('id_evento')
         ->whereColumn('id_usuario', 'id_usuario')
         ->where('usuarios_eventos_reservan.esta_activo','=','1')
+        ->where('id_evento',$id)
         ->where('id_evento','=',$id)
         ])->get();
 
-        return view("events.show", ["usuarios" => $usuarios]);
+        return view("users.home", ["usuarios" => $usuarios]);
     }
-
-
-
-
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Usuario;
+use App\Models\usuarios_eventos_crean;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
@@ -17,7 +19,6 @@ class EventoController extends Controller
         $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
 
         if (auth()->user()->role === 'admin') {
-
             return view("dashboard.events", ["eventos" => $eventos]);
         } else {
             return view("home", ["eventos" => $eventos]);
@@ -45,6 +46,23 @@ class EventoController extends Controller
         //
     }
 
+    public function attendance(Request $request, $eventoId)
+    {
+        $userId = auth()->user()->id;
+        $eventoRegistro = usuarios_eventos_crean::where('id_usuario', '=', $userId)
+            ->where('id_evento', '=', $eventoId)
+            ->get();
+
+        print($eventoRegistro[0]);
+
+        $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
+        if (auth()->user()->role === 'admin') {
+            return view("dashboard.events", ["eventos" => $eventos]);
+        } else {
+            return view("home", ["eventos" => $eventos]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -53,9 +71,25 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        $evento = Evento::find($id);
+        $evento = Evento::where('id_evento', '=', $id)
+            ->limit(1)
+            ->get();
 
-        return view("events.show", ["evento" => $evento]);
+        $usuarios = Usuario::join(
+            'usuarios_eventos_creans',
+            'usuarios_eventos_creans.id_usuario',
+            '=', 'usuarios.id_usuario')
+            ->where('id_evento', '=', $id)
+            ->where('usuarios_eventos_creans.esta_activo', 1)
+            ->select('usuarios.nombre', 'usuarios.id_usuario', 'usuarios_eventos_creans.id_evento')
+            ->get();
+
+        $data = [
+            "evento" => $evento[0],
+            "usuarios" => $usuarios
+        ];
+
+        return view("events.show", $data);
     }
 
     /**

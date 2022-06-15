@@ -22,7 +22,7 @@
             {{-- Every event --}}
             @forelse($eventos as $evento)
                 <div class="col-md-4 mb-md-3">
-                    <a href="/eventos/{{ $evento->id }}" style="text-decoration:none; color:black;">
+                    <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ $evento->imagen }}" class="card-img-top" alt="{{ $evento->nombre_evento }}">
                             <div class="card-body">

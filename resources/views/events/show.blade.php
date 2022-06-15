@@ -7,7 +7,6 @@
     <div class="infoHeader">
         <h1 style="color: white;">{{ $evento->nombre_evento }}</h1>
     </div>
-
     <section id="descriptionEvent">
         <div class="container-wide">
             <h2 class="mb-5">Detalle de evento</h2>
@@ -20,11 +19,13 @@
     <section>
         <div class="container-wide" style="padding-top: 4rem">
             <!-- Button trigger modal -->
+            
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Lista de registados
             </button>
         </div>
 
+        
         <!-- Modal -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -36,18 +37,34 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row d-flex justify-content-center">
-                                {{-- <h1 class="text-3xl text-center font-bold">Registrar evento</h1> --}}
-                                <div class="col-sm-8">
-                                    <form class="mt-4" method="POST" action="">
-                                        @csrf
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($usuarios as $user)
+                                            <tr>
+                                                <th scope="row">{{  $loop->index + 1 }}</th>
+                                                <td>{{ $user->nombre }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                        <div class="modal-footer" id="opciones">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
+                                <form class="mt-4" method="POST" action="">
+                                @csrf
+
+                                <div class="modal-footer" id="opciones">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
     </section>
 
     <section id="mapLocation">
@@ -57,8 +74,7 @@
         </div>
     </section>
 
-
-    <<<<<<< HEAD=======<section>
+    <section>
         <div id="boton">
             <!-- Button trigger modal -->
             <button type="button" class="crear btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -71,25 +87,24 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Registro al evento</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Asistencia</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
                             <div class="row d-flex justify-content-center">
-                                {{-- <h1 class="text-3xl text-center font-bold">Registrar evento</h1> --}}
                                 <div class="col-sm-8">
-                                    <form class="mt-4" method="POST" action="">
+                                    <form class="mt-4" method="POST" action="/editarAsistencia/{{ $evento->id_evento }}">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">
-                                                ¿Se quiere registrar?
+                                                ¿Va a asistir al evento?
                                             </label>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1" checked>
                                                 <label class="form-check-label" for="flexRadioDefault1">
-                                                    Si quiero
+                                                    Quiero Asistir
                                                 </label>
                                             </div>
                                             @error('flexRadioDefault1')
@@ -101,7 +116,7 @@
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault2">
                                                 <label class="form-check-label" for="flexRadioDefault2">
-                                                    No quiero
+                                                    No quiero asistir
                                                 </label>
                                             </div>
                                             @error('flexRadioDefault2')
@@ -124,8 +139,6 @@
                         </div>
                     </div>
 
-
-                    >>>>>>> 5dd4ef35f575aa27fb7408f4453f1f82a07af185
                 @endsection
 
                 <style>

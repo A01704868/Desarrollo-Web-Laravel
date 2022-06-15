@@ -33,6 +33,7 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 
 // Events
 Route::redirect('/', '/eventos');
+Route::post('/editarAsistencia/{eventoId}', [EventoController::class, 'attendance'])->name('editarAsistencia');
 
 Route::get('/search', [EventoController::class, 'search']);
 Route::resource('/eventos', EventoController::class)->middleware('auth.user');
@@ -41,6 +42,7 @@ Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 
 // Usuarios
 Route::resource('/usuariosRegistrados', UsuariosController::class)->middleware('auth.user');
+// Route::get('/events/{id}', [UsuariosController::class, 'show'])->middleware('auth.user');
 
 
 // Team LDAW
