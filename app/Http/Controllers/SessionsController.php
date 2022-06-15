@@ -19,14 +19,14 @@ class SessionsController extends Controller
 
         if (auth()->attempt(request(['email', 'password'])) == false) {
             return back()->withErrors([
-                'message' => 'Contraseña incorrecta',
+                'message' => 'Revisa tus credenciales',
             ]);
         } else {
 
             if (auth()->user()->role == 'admin') {
                 return redirect()->route('admin.index');
             } else {
-                return redirect()->to('/');
+                return redirect()->to('/eventos');
             }
         }
     }
@@ -36,6 +36,6 @@ class SessionsController extends Controller
 
         auth()->logout();
 
-        return redirect()->to('/');
+        return redirect()->to('/login');
     }
 }
