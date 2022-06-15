@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\UsuariosController;
 
 
 
@@ -36,6 +37,10 @@ Route::redirect('/', '/eventos');
 Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 //eventos/1 put/post/delete/get
 //eventos GET
+
+// Usuarios
+Route::resource('/usuariosRegistrados', UsuariosController::class)->middleware('auth.user');
+
 
 // Team LDAW
 Route::get('/equipo-ldaw', function () {
