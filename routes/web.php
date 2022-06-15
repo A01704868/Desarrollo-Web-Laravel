@@ -48,5 +48,12 @@ Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
-Route::get('/dashboard/mi-cuenta', [UserController::class, 'index'])
-    ->middleware('auth.admin');
+Route::resource('/dashboard/eventos', EventoController::class)->middleware('auth.admin');
+
+Route::get('/dashboard/mi-cuenta', [UserController::class, 'show'])
+    ->middleware('auth.admin')
+    ->name('mi-cuenta');
+
+Route::patch('/dashboard/mi-cuenta/{id}', [UserController::class, 'update'])
+    ->middleware('auth.admin')
+    ->name('mi-cuenta-update');

@@ -8,6 +8,12 @@
             <h1 class="text-3xl text-center font-bold">Bienvenido APP Eventos</h1>
             <div class="col-sm-8">
                 <form class="mt-4" method="POST" action="">
+                    @if (session('success'))
+                        <h6 class="alert alert-success">{{ session('success') }}</h6>
+                    @endif
+                    @error('message')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">

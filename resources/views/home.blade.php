@@ -16,8 +16,7 @@
                 <div class="col-md-4 mb-md-3">
                     <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;">
                         <div class="card" style="width: 18rem;">
-                            <img src="{{ $evento->coverPath() }}" class="card-img-top"
-                                alt="{{ $evento->nombre_evento }}">
+                            <img src="{{ $evento->imagen }}" class="card-img-top" alt="{{ $evento->nombre_evento }}">
                             <div class="card-body">
                                 <h4 class="card-title" style="margin-bottom: 2rem;">{{ $evento->nombre_evento }}</h4>
                                 <b>{{ $evento->descripcion }}</b>

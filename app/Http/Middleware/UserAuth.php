@@ -22,6 +22,6 @@ class UserAuth
         return $next($request);
       }
     }
-    return redirect()->to('/dashboard');
+    return redirect()->to('/login');
   }
 }

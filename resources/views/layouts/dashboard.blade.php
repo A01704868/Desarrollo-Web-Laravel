@@ -7,6 +7,7 @@
     <title>@yield('title') - Eventos</title>
     <!-- Bootstrap Styles-->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+
     <!-- FontAwesome Styles-->
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
     <!-- Morris Chart Styles-->

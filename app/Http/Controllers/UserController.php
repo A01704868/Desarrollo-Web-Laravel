@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('users.index');
+        $user = User::find(auth()->user()->id);
+        return view('users.index', ["user" => $user]);
     }
     public function create()
     {
@@ -18,9 +20,10 @@ class UserController extends Controller
     {
         echo 'store';
     }
-    public function show($id)
+    public function show()
     {
-        echo 'show';
+        $user = User::find(auth()->user()->id);
+        return view('users.index', ["user" => $user]);
     }
     public function edit($id)
     {
@@ -28,7 +31,11 @@ class UserController extends Controller
     }
     public function update(Request $request, $id)
     {
-        echo 'update';
+        $user = User::find($id);
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->save();
+        return redirect()->route('mi-cuenta')->with('success', 'Cuenta actualizada');
     }
     public function destroy($id)
     {
