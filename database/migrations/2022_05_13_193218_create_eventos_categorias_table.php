@@ -16,7 +16,7 @@ class CreateEventosCategoriasTable extends Migration
         Schema::create('eventos_categorias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_categoria');
-            $table->foreign('id_categoria')->references('id_categoria')->on('categorias')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_categoria')->references('id')->on('categorias')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('id_evento');
             $table->foreign('id_evento')->references('id')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('esta_activo');

@@ -16,14 +16,14 @@ class RolSeeder extends Seeder
     {
         DB::table('roles')->insert([
             [
-                'id_rol' => 1,
+                'id' => 1,
                 'nombre' => 'Administrador',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')
             ],
             [
-                'id_rol' => 2,
+                'id' => 2,
                 'nombre' => 'Usuario',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),

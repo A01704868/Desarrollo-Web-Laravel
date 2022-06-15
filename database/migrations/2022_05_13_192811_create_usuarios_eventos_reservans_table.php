@@ -16,7 +16,7 @@ class CreateUsuariosEventosReservansTable extends Migration
         Schema::create('usuarios_eventos_reservans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_usuario')->references('id')->on('usuarios')->cascadeOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('id_evento');
             $table->foreign('id_evento')->references('id')->on('eventos')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('asistencia');
