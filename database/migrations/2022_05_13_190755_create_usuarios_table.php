@@ -24,9 +24,12 @@ class CreateUsuariosTable extends Migration
             $table->string('estado');
             $table->string('edad');
             $table->string('empresa');
-            $table->boolean('esta_activo');
             $table->date('fecha_creado');
             $table->date('fecha_actualizado');
+        });
+
+        Schema::table('usuarios', function ($table) {
+            $table->dropColumn('password');
         });
     }
 

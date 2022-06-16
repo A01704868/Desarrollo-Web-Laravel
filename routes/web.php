@@ -33,16 +33,25 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
 
 // Events
 Route::redirect('/', '/eventos');
-Route::post('/editarAsistencia/{eventoId}', [EventoController::class, 'attendance'])->name('editarAsistencia');
+Route::post('/eventos/{id}', [EventoController::class, 'store'])
+    ->name('add-user-event');
+
+Route::patch('/eventos/{id}', [EventoController::class, 'update'])
+    ->name('unsub-event');
 
 Route::get('/search', [EventoController::class, 'search']);
+
+Route::resource('/eventos', EventoController::class)
+    ->middleware('auth.user');
+
 Route::get('/category', [EventoController::class, 'category']);
-Route::resource('/eventos', EventoController::class)->middleware('auth.user');
+// Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 //eventos/1 put/post/delete/get
 //eventos GET
 
 // Usuarios
-Route::resource('/usuariosRegistrados', UsuariosController::class)->middleware('auth.user');
+Route::resource('/usuariosRegistrados', UsuariosController::class)
+->middleware('auth.user');
 // Route::get('/events/{id}', [UsuariosController::class, 'show'])->middleware('auth.user');
 
 
