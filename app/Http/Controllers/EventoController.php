@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Categoria;
+use App\Models\eventos_categorias;
 use App\Models\Usuario;
 use App\Models\usuarios_eventos_crean;
 use Illuminate\Http\Request;
@@ -16,12 +18,13 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Evento::orderBy('nombre_evento', 'asc')->get();
+        $categorias = Categoria::orderBy('id', 'asc')->get();
+        $eventos = Evento::orderBy('id', 'asc')->get();
 
         if (auth()->user()->role === 'admin') {
             return view("dashboard.events", ["eventos" => $eventos]);
         } else {
-            return view("home", ["eventos" => $eventos]);
+            return view("home", ["eventos" => $eventos, "categorias" => $categorias]);
         }
     }
 
@@ -30,9 +33,9 @@ class EventoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function addEvent()
     {
-        //
+        return view("dashboard.eventCreate");
     }
 
     /**
@@ -63,6 +66,35 @@ class EventoController extends Controller
         usuarios_eventos_crean::create($usuarioEvento);
         return $this->show($id);
     }
+    
+    public function createEvent(Request $request)
+    {
+        $evento = new Evento();
+        $evento->nombre_organizador = $request->nombre_organizador;
+        $evento->celular_organizador = $request->celular_organizador;
+        $evento->nombre_evento =  $request->nombre_evento;
+        $evento->imagen =  $request->imagen;
+        $evento->fecha_evento =  $request->fecha_evento;
+        $evento->hora_inicio =  $request->hora_inicio;
+        $evento->hora_final =  $request->hora_final;
+        $evento->descripcion =  $request->descripcion;
+        $evento->direccion =  $request->direccion;
+        $evento->esta_activo =  true;
+        $evento->fecha_creado = date('Y-m-d');
+        $evento->fecha_actualizado = date('Y-m-d');
+        $evento->save();
+        return redirect()->route('dashboard-events.index')->with('success', 'Evento agregado!');
+    }
+
+    public function attendance(Request $request, $eventoId)
+    {
+        $userId = auth()->user()->id;
+        $eventoRegistro = usuarios_eventos_crean::where('id_usuario', $userId)
+            ->where('id_evento', $eventoId)
+            ->get();
+
+        return view("events.show", ["eventoRegistro" => $eventoRegistro]);
+    }
 
     /**
      * Display the specified resource.
@@ -74,7 +106,7 @@ class EventoController extends Controller
     {
         $evento = Evento::where('id', '=', $id)
             ->limit(1)
-            ->get();
+            ->get()[0];
 
         $usuarios = Usuario::join(
             'usuarios_eventos_creans',
@@ -91,7 +123,7 @@ class EventoController extends Controller
             ->get();
 
         $data = [
-            "evento" => $evento[0],
+            "evento" => $evento,
             "usuarios" => $usuarios
         ];
 
@@ -144,9 +176,23 @@ class EventoController extends Controller
     public function search()
     {
         $search_text = $_GET['query'];
-        $eventos = Evento::where('nombre_evento', 'LIKE', '%'.$search_text.'%')->get();
+        $categorias = Categoria::orderBy('id', 'asc')->get();
+        $eventos = Evento::where('nombre_evento', 'LIKE', '%' . $search_text . '%')->get();
 
-        return view('events.search', compact('eventos'));
+        return view('events.search', ["eventos" => $eventos, "categorias" => $categorias]);
+    }
+
+    public function category()
+    {
+        //$search_var = $_GET['category'];
+
+        $categorias = Categoria::orderBy('id', 'asc')->get();
+
+        $eventos = Evento::whereHas('categorias', function ($q) {
+            $q->where('categoria_id', '=', $_GET['category']);
+        })->get();
+
+        return view('events.category', ["eventos" => $eventos, "categorias" => $categorias]);
     }
 
     public function unsub(Request $request, $id)

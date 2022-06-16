@@ -14,6 +14,9 @@
                 <div class="panel-heading">
                     Lista de eventos
                 </div>
+                <a href="{{ route('dashboard-add-event') }}" class="btn btn-primary mt-4">
+                    Agregar evento
+                </a>
                 @if (session('success'))
                     <h6 class="alert alert-success">{{ session('success') }}</h6>
                 @endif
@@ -22,7 +25,7 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>Foto</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Fecha del evento</th>

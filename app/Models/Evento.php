@@ -10,4 +10,9 @@ class Evento extends Model
 {
     // protected $primaryKey = 'id_evento';
     use HasFactory;
+
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class, 'eventos_categorias');
+    }
 }

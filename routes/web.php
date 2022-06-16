@@ -42,8 +42,10 @@ Route::patch('/eventos/{id}', [EventoController::class, 'update'])
 Route::get('/search', [EventoController::class, 'search']);
 
 Route::resource('/eventos', EventoController::class)
-->middleware('auth.user');
+    ->middleware('auth.user');
 
+Route::get('/category', [EventoController::class, 'category']);
+// Route::resource('/eventos', EventoController::class)->middleware('auth.user');
 //eventos/1 put/post/delete/get
 //eventos GET
 
@@ -64,6 +66,41 @@ Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
+Route::get('/dashboard/usuarios', [UserController::class, 'showAll'])
+    ->middleware('auth.admin')
+    ->name('dashboard-users');
+
+Route::get('/dashboard/usuarios/add', [UserController::class, 'addAdmin'])
+    ->middleware('auth.admin')
+    ->name('dashboard-add-user');
+
+Route::post('/dashboard/usuarios/add', [UserController::class, 'postAdmin'])
+    ->middleware('auth.admin')
+    ->name('dashboard-post-user');
+
+Route::get('/dashboard/usuarios/{id}', [UserController::class, 'show'])
+    ->middleware('auth.admin')
+    ->name('dashboard-show-user');
+
+Route::patch('/dashboard/usuarios/{id}', [UserController::class, 'edit'])
+    ->middleware('auth.admin')
+    ->name('dashboard-edit-user');
+
+Route::delete('/dashboard/usuarios/{id}', [UserController::class, 'destroy'])
+    ->middleware('auth.admin')
+    ->name('dashboard-delete-user');
+Route::get(
+    '/dashboard/add/eventos',
+    [EventoController::class, 'addEvent']
+)
+    ->middleware('auth.admin')
+    ->name('dashboard-add-event');
+Route::post(
+    '/dashboard/add/eventos',
+    [EventoController::class, 'createEvent']
+)
+    ->middleware('auth.admin')
+    ->name('dashboard-post-event');
 Route::resource(
     '/dashboard/eventos',
     EventoController::class,
@@ -71,7 +108,9 @@ Route::resource(
 )
     ->middleware('auth.admin');
 
-Route::get('/dashboard/mi-cuenta', [UserController::class, 'show'])
+
+
+Route::get('/dashboard/mi-cuenta', [UserController::class, 'showAccount'])
     ->middleware('auth.admin')
     ->name('mi-cuenta');
 

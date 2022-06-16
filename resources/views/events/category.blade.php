@@ -21,7 +21,7 @@
         <div class="col">
             <form action="{{ url('/category') }}" type="get">
                 <select class="dropdown" name="category" onchange="this.form.submit()">
-                    <option class="dropdown-item" value="0">Categorias</option>
+                <option class="dropdown-item" value="0">Categorias</option>
                     @forelse($categorias as $categoria)
                         <option class="dropdown-item" value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                     @empty
@@ -38,7 +38,7 @@
             {{-- Every event --}}
             @forelse($eventos as $evento)
                 <div class="col-md-4 mb-md-3">
-                    <a href="/eventos/{{ $evento->id }}" style="text-decoration:none; color:black;">
+                    <a href="/eventos/{{ $evento->id_evento }}" style="text-decoration:none; color:black;">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ $evento->imagen }}" class="card-img-top" alt="{{ $evento->nombre_evento }}">
                             <div class="card-body">

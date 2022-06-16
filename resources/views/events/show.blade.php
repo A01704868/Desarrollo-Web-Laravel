@@ -19,7 +19,7 @@
     <section>
         <div class="container-wide" style="padding-top: 4rem">
             <!-- Button trigger modal -->
-            
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Lista de registados
             </button>
@@ -29,7 +29,7 @@
             </button>
         </div>
 
-        
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -53,7 +53,7 @@
                                     <tbody>
                                         @foreach ($usuarios as $user)
                                             <tr>
-                                                <th scope="row">{{  $loop->index + 1 }}</th>
+                                                <th scope="row">{{ $loop->index + 1 }}</th>
                                                 <td>{{ $user->nombre }}</td>
                                                 <td>{{ $user->empresa }}</td>
                                                 <td>{{ $user->correo_electronico }}</td>
@@ -63,16 +63,19 @@
                                     </tbody>
                                 </table>
 
-                                <form class="mt-4" method="POST" action="">
-                                @csrf
-
-                                <div class="modal-footer" id="opciones">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                </div>
+                                <form class="mt-4" method="" action="">
+                                    @csrf
+                                    <div class="modal-footer" id="opciones">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="mapLocation">
@@ -88,14 +91,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Editar Asistencia</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        <h5 class="modal-title" id="exampleModalLabel">Registrase al evento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                     </div>
                     <div class="modal-body">
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-sm-8">
-                                    <form class="mt-4" method="PATCH" action="{{ route('unsub-event', ['id' => $evento->id]) }}">
+                                    <form class="mt-4" method="POST" action="{{ route('unsub-event', ['id' => $evento->id]) }}">
                                         @method('PATCH')
                                         @csrf
                                         <div class="mb-3">
@@ -111,6 +114,11 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section>
@@ -174,94 +182,94 @@
                                         </div>
                                 </div>
                             </div>
-                            </section>
+    </section>
 
 
 
-                        </div>
-                    </div>
+    </div>
+    </div>
 
-                @endsection
+@endsection
 
-                <style>
-                    #opciones {
-                        display: flex;
-                        align-items: right;
-                        justify-content: center;
+<style>
+    #opciones {
+        display: flex;
+        align-items: right;
+        justify-content: center;
 
-                        /* position: absolute; */
-                    }
+        /* position: absolute; */
+    }
 
-                    @-webkit-keyframes slide-in-bottom {
-                        0% {
-                            -webkit-transform: translateY(1000px);
-                            transform: translateY(1000px);
-                            opacity: 0;
-                        }
+    @-webkit-keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+            opacity: 0;
+        }
 
-                        100% {
-                            -webkit-transform: translateY(0);
-                            transform: translateY(0);
-                            opacity: 1;
-                        }
-                    }
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-                    @keyframes slide-in-bottom {
-                        0% {
-                            -webkit-transform: translateY(1000px);
-                            transform: translateY(1000px);
-                            opacity: 0;
-                        }
+    @keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+            opacity: 0;
+        }
 
-                        100% {
-                            -webkit-transform: translateY(0);
-                            transform: translateY(0);
-                            opacity: 1;
-                        }
-                    }
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-                    .crear {
-                        position: fixed;
-                        width: 30vw;
-                        bottom: 3%;
-                        left: 35vw;
-                        z-index: 2;
+    .crear {
+        position: fixed;
+        width: 30vw;
+        bottom: 3%;
+        left: 35vw;
+        z-index: 2;
 
-                        animation-name: slide-in-bottom;
-                        animation-duration: 0.75s;
-                    }
+        animation-name: slide-in-bottom;
+        animation-duration: 0.75s;
+    }
 
-                    #boton {
-                        width: 49%;
-                        font-size: 1rem;
-                        display: flex;
-                        justify-content: center;
-                    }
+    #boton {
+        width: 49%;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+    }
 
 
-                    .infoHeader {
-                        width: 100%;
-                        position: relative;
-                        height: 20rem;
-                        background-image: url("{{ asset('/images/students/event-placeholder.jpeg') }}");
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
+    .infoHeader {
+        width: 100%;
+        position: relative;
+        height: 20rem;
+        background-image: url("{{ asset('/images/students/event-placeholder.jpeg') }}");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-                    .container-wide {
-                        max-width: 1280px;
-                        width: 90%;
-                        margin-left: auto;
-                        margin-right: auto;
+    .container-wide {
+        max-width: 1280px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
 
-                    }
+    }
 
-                    #descriptionEvent {
-                        padding-top: 4rem;
-                    }
+    #descriptionEvent {
+        padding-top: 4rem;
+    }
 
-                    #mapLocation {
-                        padding-top: 8rem;
-                    }
-                </style>
+    #mapLocation {
+        padding-top: 8rem;
+    }
+</style>
