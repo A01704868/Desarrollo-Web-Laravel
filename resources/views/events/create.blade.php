@@ -13,8 +13,8 @@
                         <label for="exampleInputEmail1" class="form-label">
                             Nombre
                         </label>
-                        <input type="text" placeholder="Nombre del evento" class="form-control form-control-lg" id="nameEvent"
-                            name="nameEvent">
+                        <input type="text" placeholder="Nombre del evento" class="form-control form-control-lg"
+                            id="nameEvent" name="nameEvent">
                         @error('nameEvent')
                             <div class="alert alert-danger" role="alert">
                                 * {{ $message }}
@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">
-                            Descripción 
+                            Descripción
                         </label>
                         <input type="text" class="form-control form-control-lg" placeholder="Contraseña" id="descripcion"
                             name="descripcion">
@@ -56,15 +56,15 @@
                         <label for="exampleInputEmail1" class="form-label">
                             Cupo
                         </label>
-                        <input type="number" class="form-control form-control-lg" placeholder="Cupo del evento"
-                            id="cupo" name="cupo">
+                        <input type="number" class="form-control form-control-lg" placeholder="Cupo del evento" id="cupo"
+                            name="cupo">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">
                             Costo
                         </label>
-                        <input type="number" class="form-control form-control-lg" placeholder="Costo del evento"
-                            id="costo" name="costo">
+                        <input type="number" class="form-control form-control-lg" placeholder="Costo del evento" id="costo"
+                            name="costo">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">

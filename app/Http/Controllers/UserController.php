@@ -29,7 +29,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.index', ["user" => $user]);
+        return view('dashboard.userEdit', ["user" => $user]);
     }
     public function showAll()
     {
@@ -55,6 +55,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->email = $request->email;
         $user->name = $request->name;
+        $user->password = $request->password;
         $user->save();
         return redirect()->route('dashboard-users')->with('success', 'Usuario editado');
     }
