@@ -25,7 +25,7 @@ class EventSeeder extends Seeder
                 'hora_inicio' => '13:00',
                 'hora_final' => '17:00',
                 'descripcion' => 'Hoy vamos a la luna',
-                'direccion' => 'Kennedy Space Center',
+                'ubicacion' => 'Shanghai',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')
@@ -40,7 +40,7 @@ class EventSeeder extends Seeder
                 'hora_inicio' => '9:00',
                 'hora_final' => '12:00',
                 'descripcion' => 'Hoy vamos a Marte',
-                'direccion' => 'Kennedy Space Elon Musk',
+                'ubicacion' => 'Miami',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')
@@ -55,7 +55,7 @@ class EventSeeder extends Seeder
                 'hora_inicio' => '21:00',
                 'hora_final' => '23:59',
                 'descripcion' => 'Vente a Pistear',
-                'direccion' => 'Pistear',
+                'ubicacion' => 'Bangkok',
                 'esta_activo' => true,
                 'fecha_creado' => date('Y-m-d'),
                 'fecha_actualizado' => date('Y-m-d')
