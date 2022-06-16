@@ -88,7 +88,10 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="/dashboard"><i class="fa fa-dashboard"></i> Home</a>
+                        <a class="active-menu" href="{{ route('dashboard') }}">
+                            <i class="fa fa-dashboard"></i>
+                            Home
+                        </a>
                     </li>
                     <li>
                         <a href="/dashboard/usuarios"><i class="fa fa-desktop"></i> Usuarios</a>

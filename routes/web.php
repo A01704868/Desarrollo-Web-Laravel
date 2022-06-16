@@ -55,7 +55,31 @@ Route::get('/equipo-ldaw', function () {
 // Dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
-    ->name('admin.index');
+    ->name('dashboard');
+
+Route::get('/dashboard/usuarios', [UserController::class, 'showAll'])
+    ->middleware('auth.admin')
+    ->name('dashboard-users');
+
+Route::get('/dashboard/usuarios/add', [UserController::class, 'addAdmin'])
+    ->middleware('auth.admin')
+    ->name('dashboard-add-user');
+
+Route::post('/dashboard/usuarios/add', [UserController::class, 'postAdmin'])
+    ->middleware('auth.admin')
+    ->name('dashboard-post-user');
+
+Route::get('/dashboard/usuarios/{id}', [UserController::class, 'show'])
+    ->middleware('auth.admin')
+    ->name('dashboard-show-user');
+
+Route::patch('/dashboard/usuarios/{id}', [UserController::class, 'edit'])
+    ->middleware('auth.admin')
+    ->name('dashboard-edit-user');
+
+Route::delete('/dashboard/usuarios/{id}', [UserController::class, 'destroy'])
+    ->middleware('auth.admin')
+    ->name('dashboard-delete-user');
 
 Route::resource(
     '/dashboard/eventos',
@@ -64,7 +88,7 @@ Route::resource(
 )
     ->middleware('auth.admin');
 
-Route::get('/dashboard/mi-cuenta', [UserController::class, 'show'])
+Route::get('/dashboard/mi-cuenta', [UserController::class, 'showAccount'])
     ->middleware('auth.admin')
     ->name('mi-cuenta');
 

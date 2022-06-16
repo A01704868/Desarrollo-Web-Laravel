@@ -22,7 +22,7 @@
                         <table class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>Foto</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Fecha del evento</th>
