@@ -48,7 +48,7 @@
                                     <li>Fecha: {{ $evento->fecha_evento }}</li>
                                     <li>Horario: {{ $evento->hora_inicio }} - {{ $evento->hora_final }}</li>
                                     <li>Ubicacion: {{ $evento->direccion }}</li>
-                                    <li>Temperatura: {{ $evento->temperatura }}</li>
+                                    <li>Temperatura: {{ $evento->temperatura }} celsius</li>
                                     <li>Humedad: {{ $evento->humidity }}</li>
                                 </ul>
                             </div>
