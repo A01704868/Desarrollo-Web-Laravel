@@ -11,6 +11,9 @@ class Evento extends Model
     // protected $primaryKey = 'id_evento';
     use HasFactory;
 
+    const CREATED_AT = 'fecha_creado';
+    const UPDATED_AT = 'fecha_actualizado';
+
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class, 'eventos_categorias');
