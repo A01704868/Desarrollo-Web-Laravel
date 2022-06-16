@@ -41,20 +41,27 @@ class EventoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, int $id)
     {
-        //
-    }
-
-    public function attendance(Request $request, $eventoId)
-    {
-        $userId = auth()->user()->id;
-        $eventoRegistro = usuarios_eventos_crean::where('id_usuario', $userId)
-            ->where('id_evento', $eventoId)
-            ->get();
-
-        return view("events.show", ["eventoRegistro" => $eventoRegistro]);
+        $usuario = [
+            "id_rol" => 2,
+            "nombre" => $request->nombre,
+            "correo_electronico" => $request->email,
+            "celular" => $request->telefono,
+            "empresa" => $request->empresa,
+            "estado" => $request->estado,
+            "edad" => $request->edad
+        ];
         
+        $usuarioCreado = Usuario::create($usuario);
+        $usuarioEvento = [
+            'id_usuario' => $usuarioCreado->id,
+            'id_evento' => $id,
+            'esta_activo' => is_null($request->asistencia) ? 0 : 1
+        ];
+
+        usuarios_eventos_crean::create($usuarioEvento);
+        return $this->show($id);
     }
 
     /**
@@ -65,17 +72,22 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        $evento = Evento::where('id_evento', '=', $id)
+        $evento = Evento::where('id', '=', $id)
             ->limit(1)
             ->get();
 
         $usuarios = Usuario::join(
             'usuarios_eventos_creans',
             'usuarios_eventos_creans.id_usuario',
-            '=', 'usuarios.id_usuario')
-            ->where('id_evento', '=', $id)
-            ->where('usuarios_eventos_creans.esta_activo', 1)
-            ->select('usuarios.nombre', 'usuarios.id_usuario', 'usuarios_eventos_creans.id_evento')
+            '=', 'usuarios.id')
+            ->select(
+                'usuarios.nombre',
+                'usuarios.id',
+                'usuarios.empresa',
+                'usuarios.correo_electronico',
+                'usuarios_eventos_creans.id_evento')
+            ->where('usuarios_eventos_creans.id_evento', '=', $id)
+            ->where('usuarios_eventos_creans.esta_activo', '=', 1)
             ->get();
 
         $data = [
@@ -105,9 +117,15 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evento $evento)
+    public function update(Request $request, $id)
     {
-        //
+        $email = $request->email;
+        usuarios_eventos_crean::join(
+            'usuarios',
+            'usuarios.id',
+            '=', 'id_usuario'
+        )->where('correo_electronico', '=', $email)->delete();
+        return $this->show($id);
     }
 
     /**
@@ -123,10 +141,25 @@ class EventoController extends Controller
         return redirect()->route('dashboard-events.index')->with('success', 'Eliminado');
     }
 
-    public function search(){
+    public function search()
+    {
         $search_text = $_GET['query'];
         $eventos = Evento::where('nombre_evento', 'LIKE', '%'.$search_text.'%')->get();
 
         return view('events.search', compact('eventos'));
+    }
+
+    public function unsub(Request $request, $id)
+    {
+        print("hola");
+        $email = $request->email;
+        $usuario = Usuario::where('correo_electronico', '=', $email)
+            ->limit(1)
+            ->get();
+
+        $usuarioRegistroBorrado = usuarios_eventos_crean::where('id_usuario', '=', $usuario->id);
+        $usuarioRegistroBorrado->delete();
+        // print_r($usuarioRegistroBorrado);
+        // return $this->show($id);
     }
 }

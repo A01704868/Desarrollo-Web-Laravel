@@ -23,6 +23,10 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Lista de registados
             </button>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Eliminar Registro
+            </button>
         </div>
 
         
@@ -42,6 +46,8 @@
                                         <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre</th>
+                                        <th scope="col">Empresa</th>
+                                        <th scope="col">Correo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +55,8 @@
                                             <tr>
                                                 <th scope="row">{{  $loop->index + 1 }}</th>
                                                 <td>{{ $user->nombre }}</td>
+                                                <td>{{ $user->empresa }}</td>
+                                                <td>{{ $user->correo_electronico }}</td>
                                             </tr>
                                         @endforeach
                                         </tr>
@@ -75,6 +83,37 @@
     </section>
 
     <section>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Asistencia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-sm-8">
+                                    <form class="mt-4" method="PATCH" action="{{ route('unsub-event', ['id' => $evento->id]) }}">
+                                        @method('PATCH')
+                                        @csrf
+                                        <div class="mb-3">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                                <input name="email" type="email" class="form-control" placeholder="Ingresa tu correo" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" id="opciones">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary">Eliminar Registro</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+    </section>
+
+    <section>
         <div id="boton">
             <!-- Button trigger modal -->
             <button type="button" class="crear btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -94,36 +133,39 @@
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-sm-8">
-                                    <form class="mt-4" method="POST" action="/editarAsistencia/{{ $evento->id_evento }}">
+                                    <form class="mt-4" method="POST" action="{{ route('add-user-event', ['id' => $evento->id]) }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">
-                                                ¿Va a asistir al evento?
-                                            </label>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                                <input name="nombre" type="text" class="form-control" placeholder="Carlos Rodriguez" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                                <input name="email" type="email" class="form-control" placeholder="name@example.com" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+                                                <input name="telefono" type="number" class="form-control" placeholder="477-465-7788" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                                                <input name="estado" type="text" class="form-control" placeholder="Guanajuato" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Edad</label>
+                                                <input name="edad" type="number" class="form-control" placeholder="25" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Empresa</label>
+                                                <input name="empresa" type="text" class="form-control" placeholder="General Electric" required>
+                                            </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1" checked>
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input class="form-check-input" type="radio" name="asistencia">
+                                                <label class="form-check-label" for="asistencia">
                                                     Quiero Asistir
                                                 </label>
                                             </div>
-                                            @error('flexRadioDefault1')
-                                                <div class="alert alert-danger" role="alert">
-                                                    * {{ $message }}
-                                                </div>
-                                            @enderror
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault2">
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                    No quiero asistir
-                                                </label>
-                                            </div>
-                                            @error('flexRadioDefault2')
-                                                <div class="alert alert-danger" role="alert">
-                                                    * {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                         <div class="modal-footer" id="opciones">
                                             <button type="button" class="btn btn-secondary"
