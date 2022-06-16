@@ -23,10 +23,6 @@ class EventoController extends Controller
         $categorias = Categoria::orderBy('id', 'asc')->get();
         $eventos = Evento::orderBy('id', 'asc')->get();
 
-        $eventArray = json_decode($eventos, true);
-
-        $tiempo = [];
-
         foreach($eventos as $event){
             $response = Http::get('http://api.weatherapi.com/v1/current.json?key=a63b11cdcae34a9792c31001221606&q='.$event['ubicacion'].'&aqi=no')['current'];
 
@@ -158,18 +154,30 @@ class EventoController extends Controller
         $categorias = Categoria::orderBy('id', 'asc')->get();
         $eventos = Evento::where('nombre_evento', 'LIKE', '%' . $search_text . '%')->get();
 
+        foreach($eventos as $event){
+            $response = Http::get('http://api.weatherapi.com/v1/current.json?key=a63b11cdcae34a9792c31001221606&q='.$event['ubicacion'].'&aqi=no')['current'];
+
+            $event->setAttribute('temperatura', $response['temp_c']);
+            $event->setAttribute('humidity', $response['humidity']);
+        }
+
         return view('events.search', ["eventos" => $eventos, "categorias" => $categorias]);
     }
 
     public function category()
     {
-        //$search_var = $_GET['category'];
-
         $categorias = Categoria::orderBy('id', 'asc')->get();
 
         $eventos = Evento::whereHas('categorias', function ($q) {
             $q->where('categoria_id', '=', $_GET['category']);
         })->get();
+
+        foreach($eventos as $event){
+            $response = Http::get('http://api.weatherapi.com/v1/current.json?key=a63b11cdcae34a9792c31001221606&q='.$event['ubicacion'].'&aqi=no')['current'];
+
+            $event->setAttribute('temperatura', $response['temp_c']);
+            $event->setAttribute('humidity', $response['humidity']);
+        }
 
         return view('events.category', ["eventos" => $eventos, "categorias" => $categorias]);
     }

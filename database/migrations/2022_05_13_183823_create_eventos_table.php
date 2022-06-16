@@ -23,7 +23,7 @@ class CreateEventosTable extends Migration
             $table->string('hora_inicio');
             $table->string('hora_final');
             $table->string('descripcion');
-            $table->string('ubicacion');
+            $table->string('direccion');
             $table->boolean('esta_activo');
             $table->date('fecha_creado');
             $table->date('fecha_actualizado');
