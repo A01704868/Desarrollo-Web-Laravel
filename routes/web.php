@@ -80,13 +80,26 @@ Route::patch('/dashboard/usuarios/{id}', [UserController::class, 'edit'])
 Route::delete('/dashboard/usuarios/{id}', [UserController::class, 'destroy'])
     ->middleware('auth.admin')
     ->name('dashboard-delete-user');
-
+Route::get(
+    '/dashboard/add/eventos',
+    [EventoController::class, 'addEvent']
+)
+    ->middleware('auth.admin')
+    ->name('dashboard-add-event');
+Route::post(
+    '/dashboard/add/eventos',
+    [EventoController::class, 'createEvent']
+)
+    ->middleware('auth.admin')
+    ->name('dashboard-post-event');
 Route::resource(
     '/dashboard/eventos',
     EventoController::class,
     ['names' => 'dashboard-events']
 )
     ->middleware('auth.admin');
+
+
 
 Route::get('/dashboard/mi-cuenta', [UserController::class, 'showAccount'])
     ->middleware('auth.admin')

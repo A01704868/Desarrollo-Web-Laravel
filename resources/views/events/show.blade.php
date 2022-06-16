@@ -19,13 +19,13 @@
     <section>
         <div class="container-wide" style="padding-top: 4rem">
             <!-- Button trigger modal -->
-            
+
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                 Lista de registados
             </button>
         </div>
 
-        
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -40,14 +40,14 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nombre</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($usuarios as $user)
                                             <tr>
-                                                <th scope="row">{{  $loop->index + 1 }}</th>
+                                                <th scope="row">{{ $loop->index + 1 }}</th>
                                                 <td>{{ $user->nombre }}</td>
                                             </tr>
                                         @endforeach
@@ -56,12 +56,12 @@
                                 </table>
 
                                 <form class="mt-4" method="POST" action="">
-                                @csrf
+                                    @csrf
 
-                                <div class="modal-footer" id="opciones">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                </div>
+                                    <div class="modal-footer" id="opciones">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,8 @@
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-sm-8">
-                                    <form class="mt-4" method="POST" action="/editarAsistencia/{{ $evento->id_evento }}">
+                                    <form class="mt-4" method="POST"
+                                        action="/editarAsistencia/{{ $evento->id_evento }}">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">
@@ -132,94 +133,94 @@
                                         </div>
                                 </div>
                             </div>
-                            </section>
+    </section>
 
 
 
-                        </div>
-                    </div>
+    </div>
+    </div>
 
-                @endsection
+@endsection
 
-                <style>
-                    #opciones {
-                        display: flex;
-                        align-items: right;
-                        justify-content: center;
+<style>
+    #opciones {
+        display: flex;
+        align-items: right;
+        justify-content: center;
 
-                        /* position: absolute; */
-                    }
+        /* position: absolute; */
+    }
 
-                    @-webkit-keyframes slide-in-bottom {
-                        0% {
-                            -webkit-transform: translateY(1000px);
-                            transform: translateY(1000px);
-                            opacity: 0;
-                        }
+    @-webkit-keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+            opacity: 0;
+        }
 
-                        100% {
-                            -webkit-transform: translateY(0);
-                            transform: translateY(0);
-                            opacity: 1;
-                        }
-                    }
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-                    @keyframes slide-in-bottom {
-                        0% {
-                            -webkit-transform: translateY(1000px);
-                            transform: translateY(1000px);
-                            opacity: 0;
-                        }
+    @keyframes slide-in-bottom {
+        0% {
+            -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+            opacity: 0;
+        }
 
-                        100% {
-                            -webkit-transform: translateY(0);
-                            transform: translateY(0);
-                            opacity: 1;
-                        }
-                    }
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-                    .crear {
-                        position: fixed;
-                        width: 30vw;
-                        bottom: 3%;
-                        left: 35vw;
-                        z-index: 2;
+    .crear {
+        position: fixed;
+        width: 30vw;
+        bottom: 3%;
+        left: 35vw;
+        z-index: 2;
 
-                        animation-name: slide-in-bottom;
-                        animation-duration: 0.75s;
-                    }
+        animation-name: slide-in-bottom;
+        animation-duration: 0.75s;
+    }
 
-                    #boton {
-                        width: 49%;
-                        font-size: 1rem;
-                        display: flex;
-                        justify-content: center;
-                    }
+    #boton {
+        width: 49%;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+    }
 
 
-                    .infoHeader {
-                        width: 100%;
-                        position: relative;
-                        height: 20rem;
-                        background-image: url("{{ asset('/images/students/event-placeholder.jpeg') }}");
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
+    .infoHeader {
+        width: 100%;
+        position: relative;
+        height: 20rem;
+        background-image: url("{{ asset('/images/students/event-placeholder.jpeg') }}");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-                    .container-wide {
-                        max-width: 1280px;
-                        width: 90%;
-                        margin-left: auto;
-                        margin-right: auto;
+    .container-wide {
+        max-width: 1280px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
 
-                    }
+    }
 
-                    #descriptionEvent {
-                        padding-top: 4rem;
-                    }
+    #descriptionEvent {
+        padding-top: 4rem;
+    }
 
-                    #mapLocation {
-                        padding-top: 8rem;
-                    }
-                </style>
+    #mapLocation {
+        padding-top: 8rem;
+    }
+</style>
