@@ -88,7 +88,7 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="{{ route('dashboard') }}">
+                        <a class="active-menu" href="{{ route('admin.index') }}">
                             <i class="fa fa-dashboard"></i>
                             Home
                         </a>

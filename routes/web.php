@@ -55,7 +55,7 @@ Route::get('/equipo-ldaw', function () {
 // Dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])
     ->middleware('auth.admin')
-    ->name('dashboard');
+    ->name('admin.index');
 
 Route::get('/dashboard/usuarios', [UserController::class, 'showAll'])
     ->middleware('auth.admin')

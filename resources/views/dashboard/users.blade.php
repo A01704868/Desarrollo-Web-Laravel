@@ -34,7 +34,6 @@
                             </thead>
                             <tbody>
                                 @forelse($usuarios as $usuario)
-                                    {{ $usuario }}
                                     <tr>
                                         <td>{{ $usuario->id }}</td>
                                         <td>{{ $usuario->name }}</td>
