@@ -51,9 +51,11 @@ Route::get('/category', [EventoController::class, 'category']);
 
 // Usuarios
 Route::resource('/usuariosRegistrados', UsuariosController::class)
-->middleware('auth.user');
+    ->middleware('auth.user');
 // Route::get('/events/{id}', [UsuariosController::class, 'show'])->middleware('auth.user');
 
+Route::get('/mi-cuenta', [UserController::class, 'showProfile'])
+    ->name('mi-perfil');
 
 // Team LDAW
 Route::get('/equipo-ldaw', function () {
@@ -113,6 +115,8 @@ Route::resource(
 Route::get('/dashboard/mi-cuenta', [UserController::class, 'showAccount'])
     ->middleware('auth.admin')
     ->name('mi-cuenta');
+
+
 
 Route::patch('/dashboard/mi-cuenta/{id}', [UserController::class, 'update'])
     ->middleware('auth.admin')

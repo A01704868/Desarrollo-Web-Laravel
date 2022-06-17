@@ -11,29 +11,30 @@
     <h1 class="text-5xl text-center pt-5">Eventos</h1>
     <div class="container mt-4">
 
-    <div class="row">
-        <div class="col">
-            <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
-                <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;" type="submit">Buscar</button>
-            </form>
+        <div class="row">
+            <div class="col">
+                <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar Eventos" name="query"></input>
+                    <button class="btn btn-outline-success my-2 my-sm-0" style="display: none;"
+                        type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="col">
+                <form action="{{ url('/category') }}" type="get">
+                    <select class="dropdown" name="category" onchange="this.form.submit()">
+                        <option class="dropdown-item" value="0">Categorias</option>
+                        @forelse($categorias as $categoria)
+                            <option class="dropdown-item" value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                        @empty
+                            <option value="">NO hay categorias</option>
+                        @endforelse
+                    </select>
+                </form>
+            </div>
         </div>
-        <div class="col">
-            <form action="{{ url('/category') }}" type="get">
-                <select class="dropdown" name="category" onchange="this.form.submit()">
-                    <option class="dropdown-item" value="0">Categorias</option>
-                    @forelse($categorias as $categoria)
-                        <option class="dropdown-item" value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-                    @empty
-                        <option value="">NO hay categorias</option>
-                    @endforelse
-                </select>
-            </form>
+        <br>
+        <div class="row justify-content-center">
         </div>
-    </div>
-    <br>
-    <div class="row justify-content-center">      
-    </div>
         <div class="row justify-content-center event-container">
             {{-- Every event --}}
             @forelse($eventos as $evento)
@@ -61,12 +62,12 @@
 
         </div>
 
-        <div id="boton">
+        {{-- <div id="boton">
             <!-- Button trigger modal -->
             <button type="button" class="crear btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Nuevo evento
             </button>
-        </div>
+        </div> --}}
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,8 +112,8 @@
                                             <label for="exampleInputEmail1" class="form-label">
                                                 Descripción
                                             </label>
-                                            <input type="text" class="form-control form-control-lg" placeholder="Contraseña"
-                                                id="descripcion" name="descripcion">
+                                            <input type="text" class="form-control form-control-lg"
+                                                placeholder="Contraseña" id="descripcion" name="descripcion">
                                             @error('descripcion')
                                                 <div class="alert alert-danger" role="alert">
                                                     * {{ $message }}
@@ -149,7 +150,8 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-primary">Registrar evento</button>
                                 </div>
                             </div>

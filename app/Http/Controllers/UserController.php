@@ -20,6 +20,12 @@ class UserController extends Controller
     {
         echo 'store';
     }
+
+    public function showProfile()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('users.profile', ["user" => $user]);
+    }
     public function showAccount()
     {
         $user = User::find(auth()->user()->id);
