@@ -7,7 +7,7 @@ Hice la funcionalidad para hacer una lista de cartas con todos los datos de los 
 </br>
 </br>
 Hice la funcionalidad de buscar los eventos por nombre y por categoria
-![image](https://github.com/A01704868/Desarrollo-Web-Laravel/assets/78516893/5127f379-5c76-40b1-a4c2-6c072467674f)
+![image](https://github.com/A01704868/Desarrollo-Web-Laravel/assets/78516893/00e76c79-2902-4201-a044-aa5b1be53bc0)
 ![image](https://github.com/A01704868/Desarrollo-Web-Laravel/assets/78516893/58882dc0-e038-4897-93c7-196570b4c386)
 </br>
 </br>
